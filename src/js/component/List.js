@@ -14,12 +14,10 @@ export const ToDoList = props => {
 			{item}
 			<button
 				onClick={e => {
-					list.filter(actual => {
-						return (
-							event.target.parentElement.innerText !==
-							event.target.parentElement.innerText
-						);
+					let resul = list.filter((e, i) => {
+						return i !== index;
 					});
+					setList(resul);
 				}}>
 				Delete
 			</button>
