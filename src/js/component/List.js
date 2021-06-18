@@ -48,28 +48,18 @@ export const ToDoList = props => {
 								onChange={e => {
 									setValue(e.target.value);
 								}}
+								onKeyPress={e => {
+									if (e.key === "Enter") {
+										if (inputValue != "") {
+											setList([...list, inputValue]);
+										}
+									}
+								}}
 								className="form-control"
 								placeholder="What's need to be done?"
 								aria-label="Recipient's username"
 								aria-describedby="button-addon2"
-								value={inputValue}
 							/>
-							<div className="input-group-append">
-								<button
-									onClick={e => {
-										//let narray = list;
-										//narray.push(inputValue);
-										//setList(narray);
-										if (inputValue != "") {
-											setList([...list, inputValue]);
-										}
-									}}
-									className="btn btn-outline-secondary"
-									type="button"
-									id="button-addon2">
-									Button
-								</button>
-							</div>
 						</div>
 						<ul className="list-group">{lis}</ul>
 						<li className="list-group-item d-flex justify-content-between align-items-center">
