@@ -8,13 +8,22 @@ export const ToDoList = props => {
 		"Eat",
 		"Walk the dog"
 	]);
+	const [style, setStyle] = useState({ display: "none" });
 
 	var lis = list.map((item, index) => (
 		<li
 			className="list-group-item d-flex justify-content-between align-items-center"
-			key={index}>
+			key={index}
+			onMouseEnter={e => {
+				setStyle({ display: "block" });
+			}}
+			onMouseLeave={e => {
+				setStyle({ display: "none" });
+			}}>
 			{item}
+
 			<button
+				style={style}
 				type="button"
 				className="btn btn-link"
 				onClick={e => {
@@ -23,7 +32,6 @@ export const ToDoList = props => {
 					});
 					setList(resul);
 				}}>
-				{" "}
 				<i className="fas fa-times" style={{ color: "red" }}></i>
 			</button>
 		</li>
