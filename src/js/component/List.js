@@ -8,22 +8,21 @@ export const ToDoList = props => {
 		"Eat",
 		"Walk the dog"
 	]);
-	const [style, setStyle] = useState({ display: "none" });
 
 	var lis = list.map((item, index) => (
 		<li
 			className="list-group-item d-flex justify-content-between align-items-center"
 			key={index}
 			onMouseEnter={e => {
-				setStyle({ display: "block" });
+				e.target.querySelector("button").style.display = "block";
 			}}
 			onMouseLeave={e => {
-				setStyle({ display: "none" });
+				e.target.querySelector("button").style.display = "none";
 			}}>
 			{item}
 
 			<button
-				style={style}
+				style={{ display: "none" }}
 				type="button"
 				className="btn btn-link"
 				onClick={e => {
@@ -61,8 +60,9 @@ export const ToDoList = props => {
 										//let narray = list;
 										//narray.push(inputValue);
 										//setList(narray);
-
-										setList([...list, inputValue]);
+										if (inputValue != "") {
+											setList([...list, inputValue]);
+										}
 									}}
 									className="btn btn-outline-secondary"
 									type="button"
